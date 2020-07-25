@@ -53,7 +53,9 @@ class RecordWidget extends StatelessWidget {
                         _CaptionText(
                             actualPlace ? 'Hora de ingreso' : 'Ingreso'),
                         _HourText(
-                            '${record.checkIn.hour}:${record.checkIn.minute}')
+                          '${record.checkIn.hour}:${record.checkIn.minute}',
+                          isBold: actualPlace,
+                        )
                       ],
                     ),
                     SizedBox(width: 16.0),
@@ -93,14 +95,19 @@ class _CaptionText extends StatelessWidget {
 }
 
 class _HourText extends StatelessWidget {
-  _HourText(this.text);
+  _HourText(this.text, {this.isBold = false});
 
   final String text;
+  final bool isBold;
+
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18.0),
+      style: TextStyle(
+        fontWeight: isBold ? FontWeight.w400 : FontWeight.w300,
+        fontSize: 18.0,
+      ),
     );
   }
 }
