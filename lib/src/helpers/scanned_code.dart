@@ -11,9 +11,9 @@ class ScannedCode {
   Place toPlace() {
     var items = _value.split(_separator);
     return Place(
-      name: items[0],
-      id: items[1],
-      company: Company(id: '', name: items[2]),
+      id: items[0],
+      name: items[1],
+      company: Company(id: items[2], name: items[3]),
     );
   }
 }
