@@ -18,8 +18,17 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<void> registerTest(String mode, bool positive) async {
-    print('Modo: $mode');
-    print(positive ? 'Positivo' : 'Negativo');
+    var uniqueId = await _uniqueId.value();
+    if (uniqueId == null) return;
+
+    var users = _firestore.collection('users');
+    await users.document(uniqueId).setData({
+      'test': {
+        'date': DateTime.now().millisecondsSinceEpoch,
+        'method': mode,
+        'positive': positive,
+      }
+    }, merge: true);
   }
 
   @override
@@ -42,7 +51,7 @@ class UserRepository implements IUserRepository {
     await users.document(uniqueId).setData({
       'id': uniqueId,
       'token': token,
-    });
+    }, merge: true);
   }
 
   Future<void> _markFirstAccess() async {
