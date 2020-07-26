@@ -85,6 +85,7 @@ class UserRepository implements IUserRepository {
     void Function(String id) onRegister,
   }) async {
     var uniqueId = await _uniqueId.value();
+    onRegister(uniqueId);
     var token = await _token.value();
     if (uniqueId == null || token == null) return;
 
@@ -93,8 +94,6 @@ class UserRepository implements IUserRepository {
       'id': uniqueId,
       'token': token,
     }, merge: true);
-
-    onRegister(uniqueId);
   }
 
   Future<void> _markFirstAccess() async {

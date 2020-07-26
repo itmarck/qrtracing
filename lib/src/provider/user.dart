@@ -38,6 +38,7 @@ class UserProvider with ChangeNotifier {
   }
 
   void deleteUser() async {
+    uniqueId = null;
     await _repository.deleteUser();
   }
 }
