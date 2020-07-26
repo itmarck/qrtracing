@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../pages/policy.dart';
 import '../src/domain/record.dart';
 import '../src/provider/user.dart';
 import 'record.dart';
@@ -55,6 +56,7 @@ class DeleteDataButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Navigator.of(context).pushReplacementNamed(PolicyPage.routeName);
         Provider.of<UserProvider>(context, listen: false).deleteUser();
       },
       child: Container(

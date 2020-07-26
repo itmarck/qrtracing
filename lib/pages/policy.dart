@@ -33,6 +33,7 @@ class PolicyPage extends StatelessWidget {
                       titlePage,
                       style: Theme.of(context).textTheme.headline6,
                     ),
+                    SizedBox(height: 8.0),
                     Text(description),
                   ],
                 ),
