@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qrtracing/src/domain/record.dart';
+
+import '../src/domain/record.dart';
 
 class RecordWidget extends StatelessWidget {
   RecordWidget({
@@ -53,7 +54,7 @@ class RecordWidget extends StatelessWidget {
                         _CaptionText(
                             actualPlace ? 'Hora de ingreso' : 'Ingreso'),
                         _HourText(
-                          '${record.checkIn.hour}:${record.checkIn.minute}',
+                          record.checkIn.formattedTime,
                           isBold: actualPlace,
                         )
                       ],
@@ -64,8 +65,7 @@ class RecordWidget extends StatelessWidget {
                       children: <Widget>[
                         if (!actualPlace) ...[
                           _CaptionText('Salida'),
-                          _HourText(
-                              '${record.checkOut.hour}:${record.checkOut.minute}')
+                          _HourText(record.checkOut.formattedTime)
                         ]
                       ],
                     ),

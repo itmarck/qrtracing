@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:qrtracing/src/domain/company.dart';
-import 'package:qrtracing/src/domain/place.dart';
-import 'package:qrtracing/src/domain/record.dart';
-import 'package:qrtracing/widgets/record.dart';
+
+import '../src/domain/company.dart';
+import '../src/domain/place.dart';
+import '../src/domain/record.dart';
+import '../src/domain/time.dart';
+import 'record.dart';
 
 class SliverListHistory extends StatelessWidget {
   const SliverListHistory({
@@ -17,7 +19,7 @@ class SliverListHistory extends StatelessWidget {
           final company = Company(id: 'electro', name: 'Electronorte');
           final record = Record(
             uid: 'record1',
-            checkIn: DateTime(2020, 3, 2, 8, 30),
+            checkIn: Time(DateTime(2020, 3, 2, 8, 30)),
             checkOut: null,
             company: company,
             place: Place(
@@ -28,8 +30,8 @@ class SliverListHistory extends StatelessWidget {
           );
           final record2 = Record(
             uid: 'record2',
-            checkIn: DateTime(2020, 3, 2, 8, 30),
-            checkOut: DateTime(2020, 3, 2, 8, 45),
+            checkIn: Time(DateTime(2020, 3, 2, 8, 30)),
+            checkOut: Time(DateTime(2020, 3, 2, 8, 45)),
             company: company,
             place: Place(
               id: 'oficina1',

@@ -1,12 +1,13 @@
 import 'package:qrtracing/src/domain/company.dart';
 import 'package:qrtracing/src/domain/place.dart';
+import 'package:qrtracing/src/domain/time.dart';
 
 class Record {
   final String uid;
   Company company;
   Place place;
-  DateTime checkIn;
-  DateTime checkOut;
+  Time checkIn;
+  Time checkOut;
 
   Record({
     this.uid,
