@@ -1,19 +1,28 @@
-import 'package:qrtracing/src/domain/company.dart';
-import 'package:qrtracing/src/domain/place.dart';
-import 'package:qrtracing/src/domain/time.dart';
+import 'company.dart';
+import 'place.dart';
+import 'time.dart';
 
 class Record {
-  final String uid;
-  Company company;
   Place place;
   Time checkIn;
   Time checkOut;
 
   Record({
-    this.uid,
-    this.company,
     this.place,
     this.checkIn,
     this.checkOut,
   });
+
+  Record.fromJson(Map<String, dynamic> json)
+      : place = Place(
+          id: json['placeId'],
+          name: json['place'],
+          company: Company(id: json['companyId'], name: json['company']),
+        ),
+        checkIn = Time(DateTime.fromMillisecondsSinceEpoch(
+            json['checkIn'].millisecondsSinceEpoch)),
+        checkOut = json['checkOut'] != null
+            ? Time(DateTime.fromMillisecondsSinceEpoch(
+                json['checkOut']?.millisecondsSinceEpoch))
+            : null;
 }
