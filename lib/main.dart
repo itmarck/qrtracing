@@ -9,7 +9,7 @@ import 'src/repository/local_data_source.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  var firstAccess = await LocalDataSource().getFirstAccess();
+  var firstAccess = await LocalDataSource().firstAccess();
   runApp(MyApp(firstAccess: firstAccess));
 
   await SystemChrome.setPreferredOrientations([

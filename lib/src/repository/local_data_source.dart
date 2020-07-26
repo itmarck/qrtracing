@@ -1,31 +1,38 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ILocalDataSource {
-  Future<bool> getFirstAccess();
-  Future<void> setFirstAccess();
-  Future<void> removeFirstAccess();
+  Future<bool> firstAccess();
+  Future<String> getUniqueId();
+  Future<void> setUniqueId(String uniqueId);
+  Future<void> removeUniqueId();
 }
 
 class LocalDataSource implements ILocalDataSource {
-  final String _key = 'firstAccess';
+  final String _key = 'uniqueId';
 
   LocalDataSource();
 
   @override
-  Future<bool> getFirstAccess() async {
+  Future<bool> firstAccess() async {
     var _storage = await SharedPreferences.getInstance();
-    var value = await _storage.getBool(_key);
-    return value ?? true;
+    var value = await _storage.getString(_key);
+    return value == null;
   }
 
   @override
-  Future<void> setFirstAccess() async {
+  Future<String> getUniqueId() async {
     var _storage = await SharedPreferences.getInstance();
-    await _storage.setBool(_key, false);
+    return await _storage.getString(_key);
   }
 
   @override
-  Future<void> removeFirstAccess() async {
+  Future<void> setUniqueId(String uniqueId) async {
+    var _storage = await SharedPreferences.getInstance();
+    await _storage.setString(_key, uniqueId);
+  }
+
+  @override
+  Future<void> removeUniqueId() async {
     var _storage = await SharedPreferences.getInstance();
     await _storage.remove(_key);
   }
