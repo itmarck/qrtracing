@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:qrtracing/pages/policy.dart';
-import 'package:qrtracing/src/repository/local_data_source.dart';
+import 'package:provider/provider.dart';
 
 import 'pages/home.dart';
+import 'pages/policy.dart';
+import 'src/provider/user.dart';
+import 'src/repository/local_data_source.dart';
 
 bool appReady = false;
 
@@ -25,26 +27,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: appTitle,
-      initialRoute: firstAccess ? PolicyPage.routeName : HomePage.routeName,
-      onGenerateRoute: (settings) {
-        Widget page = HomePage();
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: appTitle,
+        initialRoute: firstAccess ? PolicyPage.routeName : HomePage.routeName,
+        onGenerateRoute: (settings) {
+          Widget page = HomePage();
 
-        if (settings.name == PolicyPage.routeName) {
-          page = PolicyPage();
-        }
+          if (settings.name == PolicyPage.routeName) {
+            page = PolicyPage();
+          }
 
-        return MaterialPageRoute(
-          builder: (context) {
-            return page;
-          },
-        );
-      },
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+          return MaterialPageRoute(
+            builder: (context) {
+              return page;
+            },
+          );
+        },
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
       ),
     );
   }

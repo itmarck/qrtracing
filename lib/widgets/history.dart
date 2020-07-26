@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../src/domain/company.dart';
 import '../src/domain/place.dart';
 import '../src/domain/record.dart';
 import '../src/domain/time.dart';
-import '../src/repository/user_repository.dart';
+import '../src/provider/user.dart';
 import 'record.dart';
 
 class SliverListHistory extends StatelessWidget {
@@ -44,8 +45,7 @@ class SliverListHistory extends StatelessWidget {
           if (index == 24) {
             return GestureDetector(
               onTap: () {
-                final repository = UserRepository();
-                repository.deleteUser();
+                Provider.of<UserProvider>(context, listen: false).deleteUser();
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 32.0),

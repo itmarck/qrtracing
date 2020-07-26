@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:qrtracing/pages/home.dart';
-import 'package:qrtracing/widgets/button.dart';
+import 'package:provider/provider.dart';
+
+import '../src/provider/user.dart';
+import '../widgets/button.dart';
+import 'home.dart';
 
 class PolicyPage extends StatelessWidget {
   static final String routeName = '/policy';
@@ -9,11 +12,10 @@ class PolicyPage extends StatelessWidget {
   final String titlePage = 'Bienvenido';
   final String description = 'Descripción de las politicas de privacidad y eso';
 
-  void goHome(BuildContext context) {
+  void onPressed(BuildContext context) {
+    Provider.of<UserProvider>(context, listen: false).registerUser();
     Navigator.of(context).pushReplacementNamed(HomePage.routeName);
   }
-
-  void registerUser() {}
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +39,7 @@ class PolicyPage extends StatelessWidget {
               ),
               Button(
                 label: buttonLabel,
-                onPressed: () {
-                  registerUser();
-                  goHome(context);
-                },
+                onPressed: () => onPressed(context),
               ),
             ],
           ),
