@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qrtracing/src/domain/place.dart';
-import 'package:qrtracing/src/provider/user.dart';
 
 import '../push_notifications.dart';
+import '../src/domain/place.dart';
+import '../src/provider/user.dart';
 import '../widgets/history.dart';
 import '../widgets/register_test.dart';
 import '../widgets/scanner.dart';
@@ -34,6 +36,9 @@ class _HomePageState extends State<HomePage> {
               onScan: (Place place) {
                 Provider.of<UserProvider>(context, listen: false)
                     .saveRecord(place);
+                Future.delayed(Duration(milliseconds: 1500), () {
+                  setState(() {});
+                });
               },
             ),
             SliverRegisterTest(),

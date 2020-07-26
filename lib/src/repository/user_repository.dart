@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:qrtracing/src/domain/place.dart';
 
+import '../domain/place.dart';
+import '../domain/record.dart';
 import 'firebase_token.dart';
 import 'local_data_source.dart';
 import 'unique_id.dart';
@@ -9,6 +10,7 @@ abstract class IUserRepository {
   Future<void> registerTest(String mode, bool positive);
   Future<void> registerUser();
   Future<void> saveRecord(Place place);
+  Future<List<Record>> getHistory();
   Future<void> deleteUser();
 }
 
@@ -44,7 +46,7 @@ class UserRepository implements IUserRepository {
     var uniqueId = await _uniqueId.value();
     var token = await _token.value();
 
-    var records = await _firestore.collection('records');
+    var records = _firestore.collection('records');
     await records.add({
       'user': uniqueId,
       'placeId': place.id,
@@ -54,6 +56,21 @@ class UserRepository implements IUserRepository {
       'date': FieldValue.serverTimestamp(),
       'token': token,
     });
+  }
+
+  @override
+  Future<List<Record>> getHistory() async {
+    var uniqueId = await _uniqueId.value();
+    var users = _firestore.collection('users');
+    var user = users.document(uniqueId);
+    var documents = await user
+        .collection('history')
+        .orderBy('checkIn', descending: true)
+        .getDocuments(source: Source.server);
+    var records = documents.documents.map(
+      (document) => Record.fromJson(document.data),
+    );
+    return records.toList();
   }
 
   @override

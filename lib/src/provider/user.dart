@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:qrtracing/src/domain/place.dart';
-import 'package:qrtracing/src/repository/user_repository.dart';
+
+import '../domain/place.dart';
+import '../domain/record.dart';
+import '../repository/user_repository.dart';
 
 class UserProvider with ChangeNotifier {
   final IUserRepository _repository = UserRepository();
@@ -15,6 +17,10 @@ class UserProvider with ChangeNotifier {
 
   void saveRecord(Place place) async {
     await _repository.saveRecord(place);
+  }
+
+  Future<List<Record>> getHistory() async {
+    return await _repository.getHistory();
   }
 
   void deleteUser() async {

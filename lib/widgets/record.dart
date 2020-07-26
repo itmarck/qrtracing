@@ -22,6 +22,7 @@ class RecordWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(16.0),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           if (actualPlace)
@@ -34,13 +35,14 @@ class RecordWidget extends StatelessWidget {
             children: <Widget>[
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
                     record.place.name,
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
                   ),
-                  Text(record.company.name)
+                  Text(record.place.company.name)
                 ],
               ),
               SizedBox(
@@ -50,6 +52,7 @@ class RecordWidget extends StatelessWidget {
                   children: <Widget>[
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         _CaptionText(
                             actualPlace ? 'Hora de ingreso' : 'Ingreso'),
@@ -62,6 +65,7 @@ class RecordWidget extends StatelessWidget {
                     SizedBox(width: 16.0),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         if (!actualPlace) ...[
                           _CaptionText('Salida'),
