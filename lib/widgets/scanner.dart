@@ -7,7 +7,10 @@ class SliverScanner extends StatefulWidget {
     this.onScan,
   }) : super(key: key);
 
-  final String label = 'Escanea el código QR';
+  final String scanLabel = 'Escanea el código QR';
+  final String codelabel = 'Lugar registrado';
+  final int delaySeconds = 10;
+
   final void Function(String result) onScan;
 
   @override
@@ -17,15 +20,24 @@ class SliverScanner extends StatefulWidget {
 class _SliverScannerState extends State<SliverScanner> {
   final GlobalKey key = GlobalKey(debugLabel: 'QR');
   QRViewController controller;
+  bool disabled = false;
   String result = '';
 
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
+      result = scanData;
+      if (!disabled) {
+        disabled = true;
         widget.onScan(result);
+      }
+
+      Future.delayed(Duration(seconds: widget.delaySeconds), () {
+        disabled = false;
+        setState(() {});
       });
+
+      setState(() {});
     });
   }
 
@@ -36,16 +48,14 @@ class _SliverScannerState extends State<SliverScanner> {
         Stack(children: <Widget>[
           AspectRatio(
             aspectRatio: 1,
-            child: Container(
-              child: QRView(
-                key: key,
-                onQRViewCreated: _onQRViewCreated,
-                overlay: QrScannerOverlayShape(
-                  borderColor: Colors.white,
-                  borderLength: 24.0,
-                  borderWidth: 8.0,
-                  cutOutSize: 160.0,
-                ),
+            child: QRView(
+              key: key,
+              onQRViewCreated: _onQRViewCreated,
+              overlay: QrScannerOverlayShape(
+                borderColor: disabled ? Colors.transparent : Colors.white,
+                borderLength: 24.0,
+                borderWidth: 8.0,
+                cutOutSize: 160.0,
               ),
             ),
           ),
@@ -55,7 +65,7 @@ class _SliverScannerState extends State<SliverScanner> {
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.symmetric(vertical: 32.0),
               child: Text(
-                widget.label,
+                disabled ? widget.codelabel : widget.scanLabel,
                 style: TextStyle(color: Colors.white),
                 textAlign: TextAlign.center,
               ),
