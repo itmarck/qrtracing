@@ -10,7 +10,7 @@ class PolicyPage extends StatelessWidget {
 
   final String buttonLabel = 'ACEPTO';
   final String titlePage = 'Bienvenido';
-  final String description = 'Descripción de las politicas de privacidad y eso';
+  final String description = 'Descripción de las politicas de privacidad';
 
   void onPressed(BuildContext context) {
     Provider.of<UserProvider>(context, listen: false).registerUser();

@@ -1,0 +1,173 @@
+[33mcommit c9c4308309221c120c8bb0258583ee38d25a893f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 13:24:31 2020 -0500
+
+    dev: Show stream builder in record list
+
+[33mcommit 61010a2c6459ec416a9b7bfc1aba0cbdb038b0f7[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 13:21:15 2020 -0500
+
+    dev: Save unique id in local storage
+
+[33mcommit 87f61300473e2ab787ea655ed7a2799019d05ebc[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 11:59:11 2020 -0500
+
+    dev: Get history from firestore and reload
+
+[33mcommit f7690ebf0f264bcee29bde5b0fe83aa9e4100b03[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 11:56:31 2020 -0500
+
+    chore: Get record from json
+
+[33mcommit 4e827a14e878fef9e883f23fd57fba369b6ca777[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 11:28:48 2020 -0500
+
+    chore: Update scanner fields
+
+[33mcommit 4b517488dad599495f01bd00194b3ba9f59d0970[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 10:01:58 2020 -0500
+
+    dev: Save record action
+
+[33mcommit a63189d45eebaaf55506c2fc124a34e8ae4bab00[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 07:57:09 2020 -0500
+
+    dev: Return place object in on scan param
+
+[33mcommit f0e22c374687400e8a4254387444b7f225393e66[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 07:38:35 2020 -0500
+
+    dev: Delay between scanned
+
+[33mcommit 9d718a1fc21b6b1107139b9dae8cd6b6b2992015[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 06:44:54 2020 -0500
+
+    dev: Push notifications configuration
+
+[33mcommit 8d83a93ae0854363dd45b777d1ba031a039180c5[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 05:15:55 2020 -0500
+
+    dev: Click to open configuration
+
+[33mcommit c996a1e49df55f859563dcbdd29b748edafa6b70[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 04:56:30 2020 -0500
+
+    dev: Register test firebase implementation
+
+[33mcommit 4fe0ca4b6301c19edfdfcac365fc475e75b0a048[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 04:50:30 2020 -0500
+
+    dev: Register test form ready for implementation
+
+[33mcommit 07ac58a6456abaded764483b1a44317ee7585af9[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 04:24:21 2020 -0500
+
+    chore: Simple map routes
+
+[33mcommit 42f1305c1ed956739fa7fb9d976177d02b15a0ae[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 04:20:53 2020 -0500
+
+    chore: Refactor the async init function
+
+[33mcommit 8740118c2d424bbdee6983be2c454814c44e6ae2[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 04:20:25 2020 -0500
+
+    dev: Provider for repository access
+
+[33mcommit 5b91734b0472138f106f993d635df4d764794fa7[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 03:45:46 2020 -0500
+
+    dev: Remove user data button
+
+[33mcommit e37068415936e199ae8c3f4d5c744d04f56b8d3e[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 03:45:26 2020 -0500
+
+    dev: Verification for initial route
+
+[33mcommit f59ca9f8f3186217b79f286cebd444d171888d74[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 03:44:43 2020 -0500
+
+    dev: User repository implementation
+
+[33mcommit 7fa0e22cab6948dd8a4a992242110ed19f2c079a[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 03:11:20 2020 -0500
+
+    chore: Replace and add shared preferences
+
+[33mcommit a853e8f6eae1dd4664f33a8cc0ec415646615f11[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 01:26:15 2020 -0500
+
+    chore: Firebase implementation
+
+[33mcommit 1953be11f78790c59b1124e4b5a17c96b5f65679[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 00:20:04 2020 -0500
+
+    chore: Add dependencies
+
+[33mcommit e908f4329f78f0ada20e2cf824531c1570121ad4[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sun Jul 26 00:12:43 2020 -0500
+
+    dev: Policy page added
+
+[33mcommit 10901deb76a0decbbb17ea0bcf2c109d13c6392d[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sat Jul 25 23:35:54 2020 -0500
+
+    chore: Custom button
+
+[33mcommit 38b1f758a3e529b42dd0949fb19e6a0f0bc501f5[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sat Jul 25 23:31:39 2020 -0500
+
+    refactor: Register test divided into other files
+
+[33mcommit 7711fa0872820d7e22d0383b128d70c1c4e47d43[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sat Jul 25 23:19:13 2020 -0500
+
+    chore: Time with format
+
+[33mcommit 8fa890de927b4de6f7a94dcedf1e6bbcf9d07225[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sat Jul 25 23:00:17 2020 -0500
+
+    chore: Extract home page in another file
+
+[33mcommit 779f13a545001c483aead281af59129991aee84f[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sat Jul 25 22:57:34 2020 -0500
+
+    dev: Register test form in modal bottom sheet
+
+[33mcommit 32fce85ade07be0f4bc9a6ddb11933783ba28073[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sat Jul 25 17:31:26 2020 -0500
+
+    chore: Check in hour bold
+
+[33mcommit 7fb145e3781385f0080e17ecb7ba271aee067dc3[m
+Author: Marcelo Velasquez <marceloo.velasquez@hotmail.com>
+Date:   Sat Jul 25 15:51:43 2020 -0500
+
+    chore: Home page design and record history

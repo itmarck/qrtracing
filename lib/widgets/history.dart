@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qrtracing/src/domain/record.dart';
 
+import '../src/domain/record.dart';
 import '../src/provider/user.dart';
 import 'record.dart';
 
@@ -19,7 +18,7 @@ class SliverListHistory extends StatelessWidget {
       delegate: SliverChildListDelegate(
         [
           Padding(
-            padding: EdgeInsets.fromLTRB(16.0, 0, 16.0, 24.0),
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: StreamBuilder<List<Record>>(
               stream: provider.getHistory(),
               builder: (context, snapshot) {
@@ -40,6 +39,7 @@ class SliverListHistory extends StatelessWidget {
               },
             ),
           ),
+          DeleteDataButton(),
         ],
       ),
     );
@@ -60,7 +60,7 @@ class DeleteDataButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 32.0),
         child: Center(
-          child: Text('Eliminar todos mis datos'),
+          child: Text('Eliminar mis datos'),
         ),
       ),
     );
