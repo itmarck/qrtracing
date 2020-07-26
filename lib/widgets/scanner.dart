@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
+import '../src/domain/place.dart';
+import '../src/helpers/scanned_code.dart';
+
 class SliverScanner extends StatefulWidget {
   const SliverScanner({
     Key key,
@@ -11,7 +14,7 @@ class SliverScanner extends StatefulWidget {
   final String codelabel = 'Lugar registrado';
   final int delaySeconds = 10;
 
-  final void Function(String result) onScan;
+  final void Function(Place result) onScan;
 
   @override
   _SliverScannerState createState() => _SliverScannerState();
@@ -29,7 +32,7 @@ class _SliverScannerState extends State<SliverScanner> {
       result = scanData;
       if (!disabled) {
         disabled = true;
-        widget.onScan(result);
+        widget.onScan(ScannedCode(result).toPlace());
       }
 
       Future.delayed(Duration(seconds: widget.delaySeconds), () {
