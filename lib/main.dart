@@ -7,8 +7,6 @@ import 'pages/policy.dart';
 import 'src/provider/user.dart';
 import 'src/repository/local_data_source.dart';
 
-bool appReady = false;
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var firstAccess = await LocalDataSource().getFirstAccess();
@@ -35,18 +33,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: appTitle,
         initialRoute: firstAccess ? PolicyPage.routeName : HomePage.routeName,
-        onGenerateRoute: (settings) {
-          Widget page = HomePage();
-
-          if (settings.name == PolicyPage.routeName) {
-            page = PolicyPage();
-          }
-
-          return MaterialPageRoute(
-            builder: (context) {
-              return page;
-            },
-          );
+        routes: {
+          HomePage.routeName: (_) => HomePage(),
+          PolicyPage.routeName: (_) => PolicyPage(),
         },
         theme: ThemeData(
           primarySwatch: Colors.teal,
