@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../push_notifications.dart';
 import '../widgets/history.dart';
 import '../widgets/register_test.dart';
 import '../widgets/scanner.dart';
@@ -14,6 +15,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    PushNotificationsManager().init(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

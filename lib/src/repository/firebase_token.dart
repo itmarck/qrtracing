@@ -8,10 +8,7 @@ class FirebaseToken {
   FirebaseToken();
 
   Future<String> value() async {
-    if (Platform.isIOS) {
-      _firebaseMessaging.requestNotificationPermissions();
-      _firebaseMessaging.configure();
-    }
+    if (Platform.isIOS) _firebaseMessaging.requestNotificationPermissions();
 
     return await _firebaseMessaging.getToken();
   }
