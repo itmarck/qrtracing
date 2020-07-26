@@ -4,20 +4,23 @@ class Select extends StatefulWidget {
   Select({
     @required this.label,
     @required this.options,
+    this.onSelect,
   });
 
   final String label;
   final Map<int, String> options;
+  final void Function(String value) onSelect;
 
   @override
   _SelectState createState() => _SelectState();
 }
 
 class _SelectState extends State<Select> {
-  int value;
+  String value;
 
-  void onTapButton(int key) {
-    value = key;
+  void onTapButton(String newValue) {
+    value = newValue;
+    widget.onSelect(newValue);
     setState(() {});
   }
 
@@ -37,13 +40,13 @@ class _SelectState extends State<Select> {
           children: widget.options.entries
               .map(
                 (entry) => GestureDetector(
-                  onTap: () => onTapButton(entry.key),
+                  onTap: () => onTapButton(entry.value),
                   child: Container(
                     margin: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
                       color: Theme.of(context)
                           .primaryColor
-                          .withAlpha(value == entry.key ? 64 : 16),
+                          .withAlpha(value == entry.value ? 64 : 16),
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                     padding: const EdgeInsets.symmetric(

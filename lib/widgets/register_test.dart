@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qrtracing/src/provider/user.dart';
 import 'package:qrtracing/widgets/button.dart';
 
 import 'form_bottom_sheet.dart';
@@ -30,7 +32,10 @@ class RegisterTestHeader extends SliverPersistentHeaderDelegate {
 
   final String label = 'REGISTRA TU TEST';
 
-  void register() {}
+  void register(BuildContext context, String mode, bool positive) {
+    Provider.of<UserProvider>(context, listen: false)
+        .registerTest(mode, positive);
+  }
 
   @override
   Widget build(context, shrinkOffset, overlapsContent) {
@@ -46,7 +51,12 @@ class RegisterTestHeader extends SliverPersistentHeaderDelegate {
                 backgroundColor: Theme.of(context).canvasColor,
                 context: context,
                 builder: (context) => Wrap(
-                  children: <Widget>[FormBottomSheet(onPressed: register)],
+                  children: <Widget>[
+                    FormBottomSheet(
+                      onPressed: (mode, positive) =>
+                          register(context, mode, positive),
+                    )
+                  ],
                 ),
               );
             },

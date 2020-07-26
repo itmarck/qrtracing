@@ -17,7 +17,10 @@ class UserRepository implements IUserRepository {
   final LocalDataSource _dataSource = LocalDataSource();
 
   @override
-  Future<void> registerTest(String mode, bool positive) async {}
+  Future<void> registerTest(String mode, bool positive) async {
+    print('Modo: $mode');
+    print(positive ? 'Positivo' : 'Negativo');
+  }
 
   @override
   Future<void> registerUser() async {

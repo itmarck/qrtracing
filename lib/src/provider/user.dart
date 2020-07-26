@@ -4,8 +4,8 @@ import 'package:qrtracing/src/repository/user_repository.dart';
 class UserProvider with ChangeNotifier {
   final IUserRepository _repository = UserRepository();
 
-  void registerTest() async {
-    // await _repository.registerTest(mode, positive);
+  void registerTest(String mode, bool positive) async {
+    await _repository.registerTest(mode, positive);
   }
 
   void registerUser() async {
