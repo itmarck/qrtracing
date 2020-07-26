@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     PushNotificationsManager().init(context);
+    Provider.of<UserProvider>(context).init();
   }
 
   @override
