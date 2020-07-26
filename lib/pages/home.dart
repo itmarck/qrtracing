@@ -36,9 +36,6 @@ class _HomePageState extends State<HomePage> {
               onScan: (Place place) {
                 Provider.of<UserProvider>(context, listen: false)
                     .saveRecord(place);
-                Future.delayed(Duration(milliseconds: 1500), () {
-                  setState(() {});
-                });
               },
             ),
             SliverRegisterTest(),

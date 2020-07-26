@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qrtracing/src/domain/record.dart';
@@ -18,25 +19,24 @@ class SliverListHistory extends StatelessWidget {
       delegate: SliverChildListDelegate(
         [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: FutureBuilder<List<Record>>(
-              future: provider.getHistory(),
+            padding: EdgeInsets.fromLTRB(16.0, 0, 16.0, 24.0),
+            child: StreamBuilder<List<Record>>(
+              stream: provider.getHistory(),
               builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.done:
-                    var records = snapshot.data;
-                    return Column(
-                        children: records
-                            .map((record) => RecordWidget(record: record))
-                            .toList());
-                    break;
-                  case ConnectionState.waiting:
-                    return LinearProgressIndicator();
-                  default:
-                    return Center(
-                      child: Text('Algo salió mal'),
-                    );
+                if (snapshot.hasData) {
+                  var records = snapshot.data;
+                  return Column(
+                    children: records
+                        .map((record) => RecordWidget(record: record))
+                        .toList(),
+                  );
                 }
+
+                if (snapshot.hasError) {
+                  return Center(child: Text('Algo salió mal'));
+                }
+
+                return LinearProgressIndicator();
               },
             ),
           ),
