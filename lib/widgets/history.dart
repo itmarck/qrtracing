@@ -4,6 +4,7 @@ import '../src/domain/company.dart';
 import '../src/domain/place.dart';
 import '../src/domain/record.dart';
 import '../src/domain/time.dart';
+import '../src/repository/user_repository.dart';
 import 'record.dart';
 
 class SliverListHistory extends StatelessWidget {
@@ -39,6 +40,21 @@ class SliverListHistory extends StatelessWidget {
               company: company,
             ),
           );
+
+          if (index == 24) {
+            return GestureDetector(
+              onTap: () {
+                final repository = UserRepository();
+                repository.deleteUser();
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 32.0),
+                child: Center(
+                  child: Text('Eliminar todos mis datos'),
+                ),
+              ),
+            );
+          }
 
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
