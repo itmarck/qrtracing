@@ -70,7 +70,6 @@ class UserRepository implements IUserRepository {
         .snapshots();
     var stream = snapshots.map(
       (snapshot) => snapshot.documents.map((document) {
-        print(document.data);
         return Record.fromJson(document.data);
       }).toList(),
     );

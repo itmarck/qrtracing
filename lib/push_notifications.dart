@@ -17,14 +17,9 @@ class PushNotificationsManager {
     if (!_initialized) {
       _firebaseMessaging.requestNotificationPermissions();
       _firebaseMessaging.configure(
-        onLaunch: (Map<String, dynamic> message) async {
-          print('onLaunch: $message');
-        },
-        onResume: (Map<String, dynamic> message) async {
-          print('onResume: $message');
-        },
+        onLaunch: (Map<String, dynamic> message) async {},
+        onResume: (Map<String, dynamic> message) async {},
         onMessage: (Map<String, dynamic> message) async {
-          print('onMessage: $message');
           await showDialog(
             context: context,
             builder: (context) => AlertDialog(
