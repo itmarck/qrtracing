@@ -10,7 +10,7 @@ class UserProvider with ChangeNotifier {
 
   String uniqueId;
 
-  UserProvider() {
+  UserProvider({this.uniqueId}) {
     init();
   }
 
