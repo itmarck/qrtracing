@@ -5,6 +5,8 @@ import '../widgets/register_test.dart';
 import '../widgets/scanner.dart';
 
 class HomePage extends StatefulWidget {
+  static final String routeName = '/home';
+
   HomePage();
 
   @override
