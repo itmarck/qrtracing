@@ -21,8 +21,8 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<void> registerUser() async {
-    await registerUserInFirestore();
-    await markFirstAccess();
+    await _registerUserInFirestore();
+    await _markFirstAccess();
   }
 
   @override
@@ -30,17 +30,19 @@ class UserRepository implements IUserRepository {
     await _dataSource.removeFirstAccess();
   }
 
-  Future<void> registerUserInFirestore() async {
-    if (_uniqueId.value == null || _token.value == null) return;
+  Future<void> _registerUserInFirestore() async {
+    var uniqueId = await _uniqueId.value();
+    var token = await _token.value();
+    if (uniqueId == null || token == null) return;
 
     var users = _firestore.collection('users');
-    await users.document(_uniqueId.value).setData({
-      'id': _uniqueId.value,
-      'token': _token.value,
+    await users.document(uniqueId).setData({
+      'id': uniqueId,
+      'token': token,
     });
   }
 
-  Future<void> markFirstAccess() async {
+  Future<void> _markFirstAccess() async {
     await _dataSource.setFirstAccess();
   }
 }
