@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qrtracing/src/domain/place.dart';
+import 'package:qrtracing/src/provider/user.dart';
 
 import '../push_notifications.dart';
 import '../widgets/history.dart';
@@ -28,7 +31,10 @@ class _HomePageState extends State<HomePage> {
         child: CustomScrollView(
           slivers: <Widget>[
             SliverScanner(
-              onScan: (result) => print('Data: $result'),
+              onScan: (Place place) {
+                Provider.of<UserProvider>(context, listen: false)
+                    .saveRecord(place);
+              },
             ),
             SliverRegisterTest(),
             SliverListHistory(),

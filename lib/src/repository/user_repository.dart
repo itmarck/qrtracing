@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:qrtracing/src/domain/place.dart';
 
 import 'firebase_token.dart';
 import 'local_data_source.dart';
@@ -7,6 +8,7 @@ import 'unique_id.dart';
 abstract class IUserRepository {
   Future<void> registerTest(String mode, bool positive);
   Future<void> registerUser();
+  Future<void> saveRecord(Place place);
   Future<void> deleteUser();
 }
 
@@ -24,7 +26,7 @@ class UserRepository implements IUserRepository {
     var users = _firestore.collection('users');
     await users.document(uniqueId).setData({
       'test': {
-        'date': DateTime.now().millisecondsSinceEpoch,
+        'date': FieldValue.serverTimestamp(),
         'method': mode,
         'positive': positive,
       }
@@ -35,6 +37,23 @@ class UserRepository implements IUserRepository {
   Future<void> registerUser() async {
     await _registerUserInFirestore();
     await _markFirstAccess();
+  }
+
+  @override
+  Future<void> saveRecord(Place place) async {
+    var uniqueId = await _uniqueId.value();
+    var token = await _token.value();
+
+    var records = await _firestore.collection('records');
+    await records.add({
+      'user': uniqueId,
+      'placeId': place.id,
+      'place': place.name,
+      'companyId': place.company.id,
+      'company': place.company.name,
+      'date': FieldValue.serverTimestamp(),
+      'token': token,
+    });
   }
 
   @override

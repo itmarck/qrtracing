@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrtracing/src/domain/place.dart';
 import 'package:qrtracing/src/repository/user_repository.dart';
 
 class UserProvider with ChangeNotifier {
@@ -10,6 +11,10 @@ class UserProvider with ChangeNotifier {
 
   void registerUser() async {
     await _repository.registerUser();
+  }
+
+  void saveRecord(Place place) async {
+    await _repository.saveRecord(place);
   }
 
   void deleteUser() async {
